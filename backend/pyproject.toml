@@ -1,0 +1,16 @@
+[project]
+name = "plantilla-react-fastapi-backend"
+version = "0.1.0"
+requires-python = ">=3.10"
+
+[tool.ruff]
+line-length = 100
+src = ["app"]
+select = ["E", "F", "I"]
+
+[tool.black]
+line-length = 100
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
