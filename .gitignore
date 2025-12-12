@@ -1,0 +1,29 @@
+# Node
+node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-store
+
+# Python
+__pycache__/
+*.py[cod]
+.env
+.venv
+venv/
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Builds
+frontend/dist
+backend/.mypy_cache
+backend/.pytest_cache
+.coverage
+
+# Docker
+postgres_data
+**/*.pyc
+README.local
