@@ -1,0 +1,52 @@
+version: '3.9'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+    volumes:
+      - ./backend:/app
+      - ./data:/app/data
+    env_file:
+      - backend/.env
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/studyquest
+    ports:
+      - '8000:8000'
+    depends_on:
+      - db
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    command: npm run dev -- --host 0.0.0.0 --port 5173
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      - VITE_API_URL=http://localhost:8000
+    ports:
+      - '5173:5173'
+    depends_on:
+      - backend
+  db:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=studyquest
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
+  adminer:
+    image: adminer
+    restart: unless-stopped
+    depends_on:
+      - db
+    ports:
+      - '8080:8080'
+volumes:
+  postgres_data:
