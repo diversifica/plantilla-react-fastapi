@@ -1,0 +1,14 @@
+name: Deploy Frontend
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ''frontend/**''
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Easypanel Frontend Deploy
+        run: curl -X POST ${{ secrets.EASYPANEL_FRONTEND_WEBHOOK }}
