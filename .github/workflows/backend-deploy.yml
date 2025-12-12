@@ -1,0 +1,14 @@
+name: Deploy Backend
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ''backend/**''
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Easypanel Backend Deploy
+        run: curl -X POST ${{ secrets.EASYPANEL_BACKEND_WEBHOOK }}
