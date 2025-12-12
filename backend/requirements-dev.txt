@@ -1,0 +1,8 @@
+ruff
+black
+isort
+pytest
+pytest-asyncio
+pytest-cov
+httpx
+faker
