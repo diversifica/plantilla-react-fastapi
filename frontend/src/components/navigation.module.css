@@ -1,0 +1,26 @@
+.sidebar {
+  background: #0f172a;
+  color: #fff;
+  padding: 2rem 1.5rem;
+}
+
+.brand {
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+
+.link {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  color: #94a3b8;
+  padding: 0.75rem 1rem;
+  border-radius: 0.8rem;
+  text-decoration: none;
+}
+
+.link:hover,
+.active {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+}
